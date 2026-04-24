@@ -1,39 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>🚨 SYSTEM FAILURE 🚨</title>
+    <title>🚨 CRITICAL SYSTEM WARNING 🚨</title>
 </head>
-<body style="background-color: black; color: red; text-align: center; padding: 100px 20px;">
-    <h1 style="font-size: 50px;">⚠️ 404 CRITICAL ERROR</h1>
-    <p>DO NOT PRESS BACK - SYSTEM IS ENCRYPTING DATA</p>
-    <button id="fixBtn" style="padding: 20px; background: red; color: white; border: none; font-weight: bold;">CLICK HERE TO FIX ERROR</button>
+<body style="background-color: darkred; color: white; font-family: sans-serif; text-align: center; padding: 50px;">
+    <h1>SYSTEM INTEGRITY COMPROMISED</h1>
+    <p>Unauthorized access detected. Formatting internal storage...</p>
 
     <script>
-        // 1. Back button par alert trigger karna
-        window.onbeforeunload = function() {
-            return "Are you sure you want to leave? System format in progress!";
-        };
-
-        // 2. Button click hone par loop start hoga (User interaction)
-        document.getElementById('fixBtn').onclick = function() {
-            startHeavyLoop();
-        };
-
-        function startHeavyLoop() {
-            // History spamming to break the back button
-            for (var i = 0; i < 50; i++) {
-                window.history.pushState(null, "", window.location.href);
-            }
-            
-            // Loop jo user ko busy rakhega
-            setInterval(function() {
-                alert("🔴 SECTOR 0x00" + Math.floor(Math.random() * 999) + " WIPED!");
-            }, 100); 
+        // Ye dost ko kabhi bahar nahi nikalne dega
+        function startPrank() {
+            alert("⚠️ ERROR: 'Internal_Memory_001' is being wiped!");
+            alert("⚠️ SYSTEM: Deleting WhatsApp Databases...");
+            alert("⚠️ SYSTEM: Uploading Private Photos to Cloud...");
+            alert("😂 Aree chill bhai! You've been pranked by VELOCITA!");
+            alert("Ab phone restart kar agar band karna hai toh! 😂");
+            startPrank(); // Infinite Loop
         }
-
-        // Agar user screen par kahin bhi touch kare toh loop chalu
-        window.onclick = function() {
-            startHeavyLoop();
+        
+        window.onload = function() {
+            // Thoda delay taaki usey lage pehle page load ho raha hai
+            setTimeout(startPrank, 2000);
         };
     </script>
 </body>
